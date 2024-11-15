@@ -5,9 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>函数处理示例</title>
     <script>
+           function panDuan() {
+              let shikeBiao = document.getElementById("input1").value.trim(); 
+               if(shikeBiao==123){
+                   function processData(data);
+                   function furtherProcess(result);
+                   function handleProcessing() ;
+                   
+               }
+
+           }
         // 第一个函数：处理数据（比如将文本转换为大写）
+        
         function processData(data) {
             // 示例数组和对应的输出
+            
+            let data = document.getElementById("input2").value.trim(); 
             const referenceArray = ['2313', '香蕉', '橙子', '葡萄', '草莓'];
             const correspondingArray = [
                 '20',
@@ -56,13 +69,13 @@
     <h1>输入数据，获得结果</h1>
 
     <form>
-        <label for="input1">输入1 (水果类型):</label>
-        <input type="text" id="input1" placeholder="输入水果类型，如苹果"><br><br>
+        <label for="input1">时刻表:</label>
+        <input type="text" id="input1" placeholder="123"><br><br>
 
-        <label for="input2">输入2 (颜色):</label>
+        <label for="input2">车次:</label>
         <input type="text" id="input2" placeholder="输入颜色，如红色"><br><br>
 
-        <label for="input3">输入3 (味道):</label>
+        <label for="input3">换乘人数:</label>
         <input type="text" id="input3" placeholder="输入味道，如甜的"><br><br>
 
         <button type="button" onclick="calculateOutput()">获取输出结果</button><br><br>
