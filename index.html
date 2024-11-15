@@ -10,7 +10,7 @@
             // 示例数组和对应的输出
             const referenceArray = ['2313', '香蕉', '橙子', '葡萄', '草莓'];
             const correspondingArray = [
-                '2313到林场数七个接1312<br>1312到魔咒数三个接2213<br>2213到林场数五个接2318<br>2318到秣周数两个接2519<br>2519回库到达车次为2520',
+                '20',
                 '黄色',
                 '橙色',
                 '紫色',
@@ -22,13 +22,19 @@
             const result = index !== -1 ? correspondingArray[index] : '未找到';
 
             // 更新页面上的结果
-            document.getElementById('result').innerHTML = `对应元素:<br>${result}`;
+            // document.getElementById('result').innerHTML = `对应元素:<br>${result}`;
             return result;
         }
 
         // 第二个函数：接收第一个函数的结果，进一步处理
         function furtherProcess(result) {
-            return result + " - 处理完成";
+            if(result){
+                return result + " - 处理完成";
+            }
+            else{
+                return result + " - wei处理完成";
+            }
+            
         }
 
         // 用于展示处理结果的函数
