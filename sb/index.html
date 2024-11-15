@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数处理示例</title>
+    <script>
+        // 第一个函数：处理数据（比如将文本转换为大写）
+        function processData(data) {
+            // 示例数组和对应的输出
+            const referenceArray = ['2313', '香蕉', '橙子', '葡萄', '草莓'];
+            const correspondingArray = [
+                '20',
+                '黄色',
+                '橙色',
+                '紫色',
+                '红色'
+            ];
+
+            const input = data;
+            const index = referenceArray.indexOf(input);
+            const result = index !== -1 ? correspondingArray[index] : '未找到';
+
+            // 更新页面上的结果
+            // document.getElementById('result').innerHTML = `对应元素:<br>${result}`;
+            return result;
+        }
+
+        // 第二个函数：接收第一个函数的结果，进一步处理
+        function furtherProcess(result) {
+            if(result){
+                return result + " - 处理完成";
+            }
+            else{
+                return result + " - wei处理完成";
+            }
+            
+        }
+
+        // 用于展示处理结果的函数
+        function handleProcessing() {
+            let inputData = document.getElementById("inputData").value.trim();  // 获取用户输入的数据并去除两端空格
+            if(inputData === "") {
+                alert("请输入有效的文本！");
+                return;
+            }
+
+            let processedData = processData(inputData);  // 第一个函数处理数据
+            let finalResult = furtherProcess(processedData);  // 第二个函数处理结果
+            document.getElementById("output").innerHTML = finalResult;  // 显示处理后的结果
+        }
+    </script>
+</head>
+<body>
+
+    <h1>数据处理示例</h1>
+
+    <label for="inputData">请输入一些文本 (例如：2313, 香蕉, 橙子, 葡萄, 草莓):</label>
+    <input type="text" id="inputData" placeholder="输入文本">
+    <button onclick="handleProcessing()">处理数据</button>
+
+    <h2>处理后的结果:</h2>
+    <p id="output"></p>
+    <p id="result" style="font-weight: bold; color: green;"></p> <!-- 显示第一个函数的结果 -->
+
+</body>
+</html>
 
