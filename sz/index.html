@@ -1,1 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通过属性查找对象序号</title>
+</head>
+<body>
+    <h1>通过属性查找对象序号</h1>
+    <div id="result"></div>
+
+    <script>
+        // 创建一个由对象组成的数组
+        const people = [
+            { name: "Alice", age: 25, job: "Engineer" },
+            { name: "Bob", age: 30, job: "Designer" },
+            { name: "Charlie", age: 22, job: "Student" }
+        ];
+
+        // 根据name属性查找对象在数组中的序号
+        const targetName = "Bob"; // 要查找的name
+        const index = people.findIndex(person => person.name === targetName);
+
+        // 显示结果
+        const resultDiv = document.getElementById('result');
+        if (index !== -1) {
+            resultDiv.innerHTML = `<p>找到对象 "${targetName}" 的序号是: ${index}</p>`;
+        } else {
+            resultDiv.innerHTML = `<p>没有找到对象 "${targetName}"</p>`;
+        }
+    </script>
+</body>
+</html>
 
