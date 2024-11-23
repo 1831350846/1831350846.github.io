@@ -11,19 +11,19 @@
 
             // 假设接受量为输入量加1
             let acceptance = numericValue - 1;
-
+           const index = arr.findIndex(person => person.checi === acceptance);
             if (arr.includes(acceptance)) { // 林场车次
            
             const index = arr.indexOf(acceptance); // 获取车次的索引
-            const L = index + inputNumber1; // 计算新的索引
+         // 计算新的索引
             // 检查新的索引是否在数组范围内
             const result = L < arr.length ? arr[L] : '未找到'; // 通过新的索引获取下一车次
-           if (trainNumbers.includes(result)) {
-            let formattedValue = result.toString().padStart(4, '0');
-            document.getElementById('result').innerHTML = `下一车次: ${formattedValue}`;
-            } else {
-                document.getElementById('result').innerHTML = `下一车次: ${result}`;
-            }
+                   if (trainNumbers.includes(result)) {
+                  let formattedValue = result.toString().padStart(4, '0');
+                  document.getElementById('result').innerHTML = `下一车次: ${formattedValue}`;
+                  } else {
+                  document.getElementById('result').innerHTML = `下一车次: ${result}`;
+                  }
             //document.getElementById('result').innerHTML = `下一车次: ${result}`; // 输出下一车次
             } else if (arr1.includes(acceptance)) { // 胜太西车次
            console.log(acceptance);
