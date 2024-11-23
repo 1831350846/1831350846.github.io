@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试版</title>
+    <link rel="shortcut icon" href="https://s.nmxc.ltd/sakurairo_vision/@2.7/basic/favicon.ico">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .container {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h2 style="display: inline;">算车次</h2>
+    <a href="https://kdocs.cn/l/cvuDyJFN3qrc" download  style="margin-left: 10px; text-decoration: none; color: blue;">使用说明</a>
+    <a href="https://kdocs.cn/l/cl72yM8q7A3m" download  style="margin-left: 10px; text-decoration: none; color: blue;">算表神器</a>
+<br>
+<br>
+    <!-- 输入框 1，用户输入 -->
+        <label for="input1">时刻表:</label>
+        <select id="input1">
+            <option value="">请选择</option>
+            <option value="L3Z047">L3Z047</option>
+            <option value="L3Z045">L3Z045</option>
+            <option value="L3Z047">L3Z046</option>
+            <option value="L3Z045">L3Z048</option>
+        </select>
+    <br>
+    <label for="inputElement">输入车次:</label>
+    <input type="number" id="inputElement" placeholder="输入车次">
+    <br>
+    <label for="inputElement1">林场换乘人数:</label>
+    <input type="number" id="inputElement1" placeholder="输入人数">
+    <br>
+    <label for="inputElement2">秣周换乘人数:</label>
+    <input type="number" id="inputElement2" placeholder="输入人数">
+    <br>
+    <label for="inputElement3">胜太西换乘人数:</label>
+    <input type="number" id="inputElement3" placeholder="输入人数">
+    <br>
+    <button onclick="checkConditions()">查找车次</button>
+
+    <div id="result">结果：<span id="output"></span></div>
+  </div>
+  <script src="index.js"></script>
+  </body>
+</html>
 
