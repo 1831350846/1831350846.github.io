@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断对象属性是否在数组内</title>
+    <script>
+        // 示例数组，包含多个对象
+        const items = [
+            { id: 1, name: "苹果", color: "红色" },
+            { id: 2, name: "香蕉", color: "黄色" },
+            { id: 3, name: "橙子", color: "橙色" },
+            { id: 4, name: "葡萄", color: "紫色" },
+            { id: 5, name: "草莓", color: "红色" }
+        ];
+
+        // 判断指定属性值是否在数组内
+        function isPropertyInArray(propertyName, propertyValue) {
+            // 使用 Array.some() 判断是否有对象符合指定属性值
+            return items.some(item => item[propertyName] === propertyValue);
+        }
+
+        // 检查用户输入的属性值
+        function checkProperty() {
+            const propertyName = document.getElementById("propertyName").value.trim(); // 属性名
+            const propertyValue = document.getElementById("propertyValue").value.trim(); // 属性值
+
+            // 判断属性值是否在数组内
+            const exists = isPropertyInArray(propertyName, propertyValue);
+
+            // 显示结果
+            if (exists) {
+                document.getElementById("result").textContent = `属性 ${propertyName} = ${propertyValue} 存在于数组中！`;
+            } else {
+                document.getElementById("result").textContent = `属性 ${propertyName} = ${propertyValue} 不存在于数组中！`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>判断对象属性是否在数组内</h1>
+    
+    <form>
+        <label for="propertyName">属性名:</label>
+        <input type="text" id="propertyName" placeholder="请输入属性名，如 name 或 color"><br><br>
+
+        <label for="propertyValue">属性值:</label>
+        <input type="text" id="propertyValue" placeholder="请输入属性值，如 苹果 或 红色"><br><br>
+
+        <button type="button" onclick="checkProperty()">检查属性</button>
+    </form>
+
+    <h2>结果:</h2>
+    <p id="result"></p>
+</body>
+</html>
