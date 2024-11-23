@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断对象属性是否在数组内</title>
+    <script>
+        // 示例数据：一个数组内有多个对象
+        const dataArray = [
+            { id: 1, name: "苹果", color: "红色" },
+            { id: 2, name: "香蕉", color: "黄色" },
+            { id: 3, name: "橙子", color: "橙色" },
+            { id: 4, name: "葡萄", color: "紫色" },
+            { id: 5, name: "草莓", color: "红色" }
+        ];
+
+        // 判断某个属性值是否在数组内
+        function isPropertyValueInArray() {
+            // 获取用户输入的属性值
+            let inputValue = document.getElementById("inputValue").value.trim();
+
+            // 使用 some() 方法来检查是否有对象的 name 属性等于输入的值
+            const exists = dataArray.some(item => item.name === inputValue);
+
+            // 显示结果
+            if (exists) {
+                document.getElementById("output").textContent = `属性值 "${inputValue}" 存在于数组中。`;
+            } else {
+                document.getElementById("output").textContent = `属性值 "${inputValue}" 不存在于数组中。`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>判断对象属性是否在数组内</h1>
+
+    <label for="inputValue">请输入要查找的水果名称:</label>
+    <input type="text" id="inputValue" placeholder="输入水果名称，如苹果"><br><br>
+
+    <button type="button" onclick="isPropertyValueInArray()">检查属性是否存在</button>
+
+    <h2>结果:</h2>
+    <p id="output"></p>
+</body>
+</html>
