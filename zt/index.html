@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试版</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .container {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="display: inline;">算车次</h2>
+        <a href="https://kdocs.cn/l/cvuDyJFN3qrc" download style="margin-left: 10px; text-decoration: none; color: blue;">使用说明</a>
+        <a href="https://kdocs.cn/l/cl72yM8q7A3m" download style="margin-left: 10px; text-decoration: none; color: blue;">算表神器</a><br><br>
+
+        <label for="input1">时刻表:</label>
+        <select id="input1">
+            <option value="">请选择</option>
+            <option value="L3Z047">L3Z047</option>
+            <option value="L3Z045">L3Z045</option>
+            <option value="L3Z046">L3Z046</option>
+            <option value="L3Z048">L3Z048</option>
+        </select>
+        <br>
+
+        <label for="inputElement">输入车次:</label>
+        <input type="number" id="inputElement" placeholder="输入车次">
+        <br>
+
+        <label for="inputElement1">林场换乘人数:</label>
+        <input type="number" id="inputElement1" placeholder="输入人数">
+        <br>
+
+        <label for="inputElement2">秣周换乘人数:</label>
+        <input type="number" id="inputElement2" placeholder="输入人数">
+        <br>
+
+        <label for="inputElement3">胜太西换乘人数:</label>
+        <input type="number" id="inputElement3" placeholder="输入人数">
+        <br>
+
+        <button onclick="checkConditions()">查找车次</button>
+        <div id="result">结果：<span id="output"></span></div>
+    </div>
+
+    <script>
+        function processData(inputNumber) {
+            let inputNumber1 = parseInt(document.getElementById("inputElement1").value, 10) || 0;
+            let inputNumber2 = parseInt(document.getElementById("inputElement2").value, 10) || 0;
+            let inputNumber3 = parseInt(document.getElementById("inputElement3").value, 10) || 0;
+
+            const arr = [8126, 1234, 5678, 8765, 4321, 2345, 6789, 9876, 3456, 7890, 2004, 6308];
+            const arr1 = [1115, 6205, 1234, 5678, 8765, 4321, 2345, 6789, 9876, 3456, 7890, 2004];
+            const arr2 = [1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009];
+
+            let acceptance = Math.floor(inputNumber) + 1;
+            let result = "车次未找到";
+
+            if (arr.includes(acceptance)) {
+                let index = arr.indexOf(acceptance);
+                result = (index + inputNumber1 < arr.length) ? arr[index + inputNumber1] : "未找到";
+            } else if (arr1.includes(acceptance)) {
+                let index = arr1.indexOf(acceptance);
+                result = (index + inputNumber3 < arr1.length) ? arr1[index + inputNumber3] : "未找到";
+            } else if (arr2.includes(acceptance)) {
+                let index = arr2.indexOf(acceptance);
+                result = (index + inputNumber2 < arr2.length) ? arr2[index + inputNumber2] : "未找到";
+            }
+
+            return result;
+        }
+
+        function checkConditions() {
+            let input1 = document.getElementById("input1").value.trim();
+            let conditions = {
+                "L3Z047": findElement,
+                "L3Z045": handleProcessing,
+                "L3Z046": findElement2,
+                "L3Z048": findElement3
+            };
+
+            if (conditions[input1]) {
+                conditions[input1]();
+            } else {
+                document.getElementById("result").innerHTML = "条件不满足，请检查输入值。";
+            }
+        }
+
+        function findElement() {
+            document.getElementById("result").innerHTML = "执行 L3Z047 逻辑";
+        }
+
+        function findElement2() {
+            document.getElementById("result").innerHTML = "执行 L3Z046 逻辑";
+        }
+
+        function findElement3() {
+            document.getElementById("result").innerHTML = "执行 L3Z048 逻辑";
+        }
+
+        function handleProcessing() {
+            let inputData = parseFloat(document.getElementById("inputElement").value);
+            if (isNaN(inputData)) {
+                document.getElementById("result").innerHTML = "请输入有效的数字。";
+                return;
+            }
+            let processedData = processData(inputData);
+            let finalResult = furtherProcess(processedData);
+            document.getElementById('result').innerHTML = `
+                下一车次: ${processedData}<br>
+                接车到车次: ${finalResult}
+            `;
+        }
+
+        function furtherProcess(value) {
+            let numericValue = parseInt(value, 10);
+            return isNaN(numericValue) ? "无法计算" : numericValue - 1;
+        }
+    </script>
+</body>
+</html>
