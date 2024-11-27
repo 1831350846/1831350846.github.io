@@ -11,5 +11,6 @@
 
             // 假设接受量为输入量加1
             let acceptance = numericValue - 1;
+                return acceptance;
            document.getElementById('result').innerHTML = `下一车次: ${acceptance}`;
       
