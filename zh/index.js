@@ -26,5 +26,7 @@ function handleProcessing() {
           let inputData = parseFloat(document.getElementById("inputElement").value);
             let processedData = processData(inputData);  // 第一个函数处理数据
             let finalResult = furtherProcess(processedData);  // 第二个函数处理结果
+        document.getElementById('result').innerHTML = `下一车次: ${processedData}`;
+        document.getElementById('result').innerHTML = `接车到车次: ${finalResult}`;
         
 }
