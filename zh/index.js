@@ -23,7 +23,7 @@
             }
         }
 function handleProcessing() {
-          
+          let inputData = parseFloat(document.getElementById("inputElement").value);
             let processedData = processData(inputData);  // 第一个函数处理数据
             let finalResult = furtherProcess(processedData);  // 第二个函数处理结果
         
