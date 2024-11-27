@@ -22,10 +22,10 @@
             const result = L < arr.length ? arr[L] : '未找到'; // 通过新的索引获取下一车次
            if (trainNumbers.includes(result)) {
             let formattedValue = result.toString().padStart(4, '0');
-            document.getElementById('result').innerHTML = `下一车次: ${formattedValue}`;
+            
                    return formattedValue;
             } else {
-                document.getElementById('result').innerHTML = `下一车次: ${result}`;
+                
                    return result;
             }
             //document.getElementById('result').innerHTML = `下一车次: ${result}`; // 输出下一车次
@@ -37,10 +37,10 @@
             const result = S < arr1.length ? arr1[S] : '未找到'; // 通过新的索引获取下一车次
             if (trainNumbers.includes(result)) {
             let formattedValue = result.toString().padStart(4, '0');
-            document.getElementById('result').innerHTML = `下一车次: ${formattedValue}`;
+         
                     return formattedValue;
             } else {
-                document.getElementById('result').innerHTML = `下一车次: ${result}`;
+                
                     return result;
             }
             
@@ -52,10 +52,10 @@
             const result = M < arr2.length ? arr2[M] : '未找到'; // 通过新的索引获取下一车次
             if (trainNumbers.includes(result)) {
             let formattedValue = result.toString().padStart(4, '0');
-            document.getElementById('result').innerHTML = `下一车次: ${formattedValue}`;
+            
                     return formattedValue;
             } else {
-                document.getElementById('result').innerHTML = `下一车次: ${result}`;
+             
                     return result;
             }
             
