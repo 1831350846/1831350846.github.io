@@ -22,3 +22,9 @@
                 document.getElementById("result").innerHTML = "条件不满足，请检查输入值。";
             }
         }
+function handleProcessing() {
+          
+            let processedData = processData(inputData);  // 第一个函数处理数据
+            let finalResult = furtherProcess(processedData);  // 第二个函数处理结果
+        
+}
