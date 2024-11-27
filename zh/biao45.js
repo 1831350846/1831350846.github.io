@@ -1,4 +1,4 @@
-        function findElement1(numericValue) {
+        function findElement1(inputNumber) {
             // 获取输入框的值（人数）45表
             let inputNumber = parseFloat(document.getElementById("inputElement").value);
             let inputNumber1 = parseFloat(document.getElementById("inputElement1").value);
