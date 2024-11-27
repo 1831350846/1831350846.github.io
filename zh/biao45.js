@@ -1,4 +1,4 @@
-        function findElement1() {
+        function findElement1(numericValue) {
             // 获取输入框的值（人数）45表
             let inputNumber = parseFloat(document.getElementById("inputElement").value);
             let inputNumber1 = parseFloat(document.getElementById("inputElement1").value);
@@ -23,8 +23,10 @@
            if (trainNumbers.includes(result)) {
             let formattedValue = result.toString().padStart(4, '0');
             document.getElementById('result').innerHTML = `下一车次: ${formattedValue}`;
+                   return formattedValue;
             } else {
                 document.getElementById('result').innerHTML = `下一车次: ${result}`;
+                   return result;
             }
             //document.getElementById('result').innerHTML = `下一车次: ${result}`; // 输出下一车次
             } else if (arr1.includes(acceptance)) { // 胜太西车次
@@ -36,8 +38,10 @@
             if (trainNumbers.includes(result)) {
             let formattedValue = result.toString().padStart(4, '0');
             document.getElementById('result').innerHTML = `下一车次: ${formattedValue}`;
+                    return formattedValue;
             } else {
                 document.getElementById('result').innerHTML = `下一车次: ${result}`;
+                    return result;
             }
             
             } else if (arr2.includes(acceptance)) { // 秣周东路车次
@@ -49,8 +53,10 @@
             if (trainNumbers.includes(result)) {
             let formattedValue = result.toString().padStart(4, '0');
             document.getElementById('result').innerHTML = `下一车次: ${formattedValue}`;
+                    return formattedValue;
             } else {
                 document.getElementById('result').innerHTML = `下一车次: ${result}`;
+                    return result;
             }
             
             } else {
