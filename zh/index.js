@@ -13,7 +13,7 @@
             if (condition1) {    // 'L3Z047' 时调用 findElement 函数
                 findElement();
             } else if (condition2) { // 'L3Z045' 时调用 findElement1 函数
-                findElement1();
+                function handleProcessing() ;
             }  else if (condition3) { // 'L3Z046' 时调用 findElement1 函数
                 findElement2();
             } else if (condition4) { // 'L3Z048' 时调用 findElement1 函数
