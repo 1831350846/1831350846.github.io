@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录成功</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .message-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+        }
+        .message-container h2 {
+            color: #4CAF50;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .message-container p {
+            font-size: 16px;
+            color: #555;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="message-container">
+        <h2>恭喜，登录成功！</h2>
+        <p>欢迎回来，您已成功登录到系统。</p>
+        <button class="btn" onclick="goToDashboard()">进入首页</button>
+    </div>
+
+    <script>
+        // 检查是否已经登录
+        const username = localStorage.getItem("username");
+
+        // 如果用户没有登录，跳转回登录页面
+        if (!username) {
+            window.location.href = "login.html";  // 跳转回登录页面
+        }
+
+        // 显示欢迎消息
+        document.querySelector("h2").textContent = `恭喜，${username}，登录成功！`;
+
+        function goToDashboard() {
+            // 跳转到首页，修改为实际的首页链接
+            window.location.href = "dashboard.html";
+        }
+    </script>
+</body>
+</html>
