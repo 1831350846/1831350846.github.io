@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>读取Excel文件</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</head>
+<body>
+
+    <h2>上传 Excel 文件并读取内容</h2>
+    <input type="file" id="upload" />
+
+    <h3>读取的 Excel 内容：</h3>
+    <pre id="output"></pre>
+
+    <script>
+        document.getElementById('upload').addEventListener('change', handleFile, false);
+
+        function handleFile(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const data = e.target.result;
+                    const workbook = XLSX.read(data, { type: 'binary' });
+                    const sheetName = workbook.SheetNames[0];  // 获取第一个工作表
+                    const sheet = workbook.Sheets[sheetName];  // 获取该工作表的数据
+                    const jsonData = XLSX.utils.sheet_to_json(sheet);  // 将工作表转换为 JSON 格式
+                    document.getElementById('output').textContent = JSON.stringify(jsonData, null, 2);  // 显示读取的数据
+                };
+                reader.readAsBinaryString(file);
+            }
+        }
+    </script>
+
+</body>
+</html>
