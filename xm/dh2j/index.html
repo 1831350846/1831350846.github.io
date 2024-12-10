@@ -30,4 +30,18 @@
     </ul>
   </nav>
 </body>
+  <script>
+  document.querySelectorAll('.dropdown > a').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault(); // 防止默认行为
+      const menu = this.nextElementSibling;
+      if (menu.style.display === "block") {
+        menu.style.display = "none";
+      } else {
+        menu.style.display = "block";
+      }
+    });
+  });
+</script>
+
 </html>
