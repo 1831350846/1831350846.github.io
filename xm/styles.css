@@ -4,18 +4,19 @@ body {
   background: linear-gradient(135deg, #ff9a9e, #fad0c4);
   height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .container {
   display: flex;
-  width: 100%;
-  height: 50%; /* 高度可以根据需要调整 */
+  flex-direction: column; /* 设置为垂直排列 */
+  width: 100%; /* 占满屏幕宽度 */
+  height: 100%; /* 占满屏幕高度 */
 }
 
 .box {
-  flex: 1; /* 每个盒子均分宽度 */
+  flex: 1; /* 每个盒子均分高度 */
   text-align: center;
   font-size: 24px;
   font-weight: bold;
@@ -25,15 +26,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s, background 0.3s;
-  border-right: 2px solid white; /* 增加分割线 */
+  transition: background 0.3s, transform 0.3s;
+  border-bottom: 2px solid white; /* 增加分割线 */
 }
 
 .box:last-child {
-  border-right: none; /* 去掉最后一个盒子的右侧分割线 */
+  border-bottom: none; /* 去掉最后一个盒子的底部分割线 */
 }
 
 .box:hover {
-  transform: scale(1.05);
   background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  transform: scale(1.03);
 }
