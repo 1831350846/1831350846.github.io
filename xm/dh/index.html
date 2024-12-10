@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Page Navigation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #333;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-around;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    #content {
+      margin-top: 60px;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a onclick="loadPage('home')">Home</a>
+    <a onclick="loadPage('about')">About</a>
+    <a onclick="loadPage('services')">Services</a>
+    <a onclick="loadPage('contact')">Contact</a>
+  </nav>
+
+  <div id="content">Welcome to Home Page!</div>
+
+  <script>
+    function loadPage(page) {
+      const content = document.getElementById('content');
+      switch (page) {
+        case 'home':
+          content.innerHTML = 'Welcome to Home Page!';
+          break;
+        case 'about':
+          content.innerHTML = 'About Us: We are a growing company.';
+          break;
+        case 'services':
+          content.innerHTML = 'Our Services: Web Development, Design, and more!';
+          break;
+        case 'contact':
+          content.innerHTML = 'Contact Us at contact@example.com';
+          break;
+      }
+    }
+  </script>
+</body>
+</html>
