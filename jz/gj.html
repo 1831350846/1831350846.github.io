@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skeleton Screen</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* 骨架屏样式 */
+    .skeleton {
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+      animation: pulse 1.5s infinite;
+    }
+    .skeleton .skeleton-header {
+      width: 50%;
+      height: 20px;
+      background-color: #ddd;
+      margin-bottom: 10px;
+    }
+    .skeleton .skeleton-paragraph {
+      width: 100%;
+      height: 10px;
+      background-color: #ddd;
+      margin-bottom: 8px;
+    }
+
+    @keyframes pulse {
+      0% {
+        background-color: #eee;
+      }
+      50% {
+        background-color: #ddd;
+      }
+      100% {
+        background-color: #eee;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 骨架屏 -->
+  <div class="skeleton">
+    <div class="skeleton-header"></div>
+    <div class="skeleton-paragraph"></div>
+    <div class="skeleton-paragraph"></div>
+  </div>
+
+  <!-- 模拟加载完成后显示真实内容 -->
+  <div id="content" style="display: none;">
+    <h1>真实内容加载完成！</h1>
+    <p>这是页面的真实内容。</p>
+  </div>
+
+  <script>
+    // 模拟3秒后加载完成
+    setTimeout(() => {
+      document.querySelector('.skeleton').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+    }, 3000);
+  </script>
+</body>
+</html>
