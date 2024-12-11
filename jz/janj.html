@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lazy Loading</title>
+  <style>
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- 首屏内容 -->
+  <h1>欢迎来到我的网站</h1>
+  <p>首屏内容已加载！</p>
+
+  <!-- 延迟加载的图片 -->
+  <img data-src="https://via.placeholder.com/800x400" alt="Lazy loaded image" class="lazy" />
+
+  <script>
+    // 延迟加载
+    window.addEventListener("DOMContentLoaded", () => {
+      const lazyImages = document.querySelectorAll("[data-src]");
+      lazyImages.forEach(img => {
+        img.src = img.dataset.src;
+        img.onload = () => img.removeAttribute("data-src");
+      });
+    });
+  </script>
+</body>
+</html>
