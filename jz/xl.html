@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>懒加载下拉菜单</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        select {
+            width: 200px;
+            padding: 5px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>懒加载下拉菜单示例</h1>
+    <select id="lazyLoadSelect">
+        <option value="" disabled selected>请选择一个选项</option>
+    </select>
+
+    <script>
+        // 模拟获取数据的函数
+        function fetchData() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    const data = [
+                        { value: '1', text: '选项 1' },
+                        { value: '2', text: '选项 2' },
+                        { value: '3', text: '选项 3' },
+                    ];
+                    resolve(data);
+                }, 1000); // 模拟异步数据加载
+            });
+        }
+
+        // 下拉菜单元素
+        const selectElement = document.getElementById('lazyLoadSelect');
+
+        // 监听下拉菜单的展开事件
+        selectElement.addEventListener('focus', async () => {
+            // 检查是否已加载数据
+            if (selectElement.options.length > 1) return;
+
+            // 显示加载中选项
+            const loadingOption = document.createElement('option');
+            loadingOption.textContent = '加载中...';
+            selectElement.appendChild(loadingOption);
+
+            // 获取数据
+            const data = await fetchData();
+
+            // 移除加载中选项
+            selectElement.removeChild(loadingOption);
+
+            // 添加数据选项
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.value;
+                option.textContent = item.text;
+                selectElement.appendChild(option);
+            });
+        }, { once: true }); // 只监听一次事件
+    </script>
+</body>
+</html>
