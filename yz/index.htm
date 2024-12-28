@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文件下载</title>
+  <style>
+    /* 添加样式来美化页面 */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    input {
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .message {
+      margin-top: 20px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>请输入密码以下载文件</h2>
+  
+  <!-- 密码输入框 -->
+  <input type="password" id="password" placeholder="请输入密码" />
+  
+  <!-- 下载按钮 -->
+  <button onclick="validatePassword()">下载文件</button>
+  
+  <!-- 错误信息显示 -->
+  <div class="message" id="message"></div>
+</div>
+
+<script>
+  function validatePassword() {
+    var password = document.getElementById("password").value;
+    var message = document.getElementById("message");
+
+    // 假设正确的密码是 "123456"
+    var correctPassword = "123456";
+
+    if (password === correctPassword) {
+      // 如果密码正确，触发文件下载
+      window.location.href = "/download-file"; // 假设后端路由为 /download-file
+    } else {
+      // 如果密码错误，显示错误信息
+      message.textContent = "密码错误，请重新输入！";
+    }
+  }
+</script>
+
+</body>
+</html>
