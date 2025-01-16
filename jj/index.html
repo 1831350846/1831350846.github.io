@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组对象选择</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>数组对象选择操作</h2>
+        <div class="form-group">
+            <label for="group-select">选择组</label>
+            <select id="group-select">
+                <option value="group1">组一</option>
+                <option value="group2">组二</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="input1">请输入序号</label>
+            <input type="number" id="input1" placeholder="输入序号">
+        </div>
+        <div class="form-group">
+            <label for="input2">数组1中数几个</label>
+            <input type="number" id="input2" placeholder="输入数组1偏移量">
+        </div>
+        <div class="form-group">
+            <label for="input3">数组2中数几个</label>
+            <input type="number" id="input3" placeholder="输入数组2偏移量">
+        </div>
+        <div class="form-group">
+            <label for="input4">数组3中数几个</label>
+            <input type="number" id="input4" placeholder="输入数组3偏移量">
+        </div>
+        <button onclick="processData()">提交</button>
+        <h3>输出结果</h3>
+        <textarea id="output" rows="10" readonly></textarea>
+    </div>
+
+    <script>
+        // 初始化数组组
+        const group1 = {
+            array1: [
+                {序号: 1, 时间: "2025-01-01", 其他: "数据A1"},
+                {序号: 2, 时间: "2025-01-02", 其他: "数据A2"},
+                {序号: 3, 时间: "2025-01-03", 其他: "数据A3"}
+            ],
+            array2: [
+                {序号: 4, 时间: "2025-01-01", 其他: "数据B1"},
+                {序号: 5, 时间: "2025-01-02", 其他: "数据B2"}
+            ],
+            array3: [
+                {序号: 6, 时间: "2025-01-01", 其他: "数据C1"},
+                {序号: 7, 时间: "2025-01-02", 其他: "数据C2"}
+            ]
+        };
+
+        const group2 = {
+            array1: [
+                {序号: 8, 时间: "2025-02-01", 其他: "数据D1"},
+                {序号: 9, 时间: "2025-02-02", 其他: "数据D2"}
+            ],
+            array2: [
+                {序号: 10, 时间: "2025-02-01", 其他: "数据E1"},
+                {序号: 11, 时间: "2025-02-02", 其他: "数据E2"}
+            ],
+            array3: [
+                {序号: 12, 时间: "2025-02-01", 其他: "数据F1"},
+                {序号: 13, 时间: "2025-02-02", 其他: "数据F2"}
+            ]
+        };
+
+        function processData() {
+            const groupSelect = document.getElementById("group-select").value;
+            const input1 = parseInt(document.getElementById("input1").value) || 0;
+            const input2 = parseInt(document.getElementById("input2").value) || 0;
+            const input3 = parseInt(document.getElementById("input3").value) || 0;
+            const input4 = parseInt(document.getElementById("input4").value) || 0;
+            const output = document.getElementById("output");
+
+            const selectedGroup = groupSelect === "group1" ? group1 : group2;
+
+            let result = "";
+
+            // 数组处理逻辑
+            for (let [key, array] of Object.entries(selectedGroup)) {
+                const foundIndex = array.findIndex(item => item.序号 === input1 + 1);
+
+                if (foundIndex !== -1) {
+                    let offset = 0;
+                    if (key === "array1") offset = input2;
+                    if (key === "array2") offset = input3;
+                    if (key === "array3") offset = input4;
+
+                    const newIndex = foundIndex + offset;
+
+                    if (newIndex >= 0 && newIndex < array.length) {
+                        const newItem = array[newIndex];
+                        result += `数组：${key}，序号：${newItem.序号}，时间：${newItem.时间}，其他：${newItem.其他}\n`;
+                    } else {
+                        result += `数组：${key}，索引超出范围\n`;
+                    }
+                }
+            }
+
+            output.value = result || "未找到匹配的序号";
+        }
+    </script>
+</body>
+</html>
