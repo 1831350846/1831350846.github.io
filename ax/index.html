@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love Heart</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    canvas {
+      display: block;
+    }
+
+    #message {
+      position: absolute;
+      top: 10%;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-size: 2em;
+      font-family: 'Arial', sans-serif;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div id="message">❤️ 送给你，我的心 ❤️</div>
+  <canvas id="canvas"></canvas>
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    let width, height;
+    let particles = [];
+
+    function resizeCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function heartFunction(t) {
+      const x = 16 * Math.pow(Math.sin(t), 3);
+      const y = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
+      return { x, y };
+    }
+
+    function createHeartParticles() {
+      particles = [];
+      for (let i = 0; i < 1000; i++) {
+        const t = Math.random() * Math.PI * 2;
+        const { x, y } = heartFunction(t);
+        particles.push({
+          x: width/2 + x * 15 + (Math.random() - 0.5) * 10,
+          y: height/2 - y * 15 + (Math.random() - 0.5) * 10,
+          size: Math.random() * 2 + 1,
+          dx: (Math.random() - 0.5) * 0.5,
+          dy: (Math.random() - 0.5) * 0.5,
+          opacity: Math.random() * 0.5 + 0.5
+        });
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+      for (let p of particles) {
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(255, 0, 100, ${p.opacity})`;
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        p.x += p.dx;
+        p.y += p.dy;
+
+        // Heartbeat effect
+        p.size += Math.sin(Date.now() / 200) * 0.05;
+      }
+
+      requestAnimationFrame(animateParticles);
+    }
+
+    createHeartParticles();
+    animateParticles();
+  </script>
+</body>
+</html>
