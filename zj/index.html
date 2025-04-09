@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>添加标签示例</title>
+</head>
+<body>
+  <h2>标签添加器</h2>
+  <button onclick="addElement()">添加一个段落</button>
+
+  <div id="container">
+    <!-- 新增的标签会插入在这里 -->
+  </div>
+
+  <script>
+    function addElement() {
+      const container = document.getElementById("container");
+      const newElement = document.createElement("p");
+      newElement.textContent = "这是一个新段落！";
+      container.appendChild(newElement);
+    }
+  </script>
+</body>
+</html>
